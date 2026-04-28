@@ -1,0 +1,14 @@
+venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+.env
+.git
+.gitignore
+chanlun.db
+node_modules
+dist
+build

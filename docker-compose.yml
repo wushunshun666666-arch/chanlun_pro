@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: chanlun_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./chanlun.db:/app/chanlun.db
+      - ./backend:/app
+    environment:
+      - DATABASE_URL=sqlite:///./chanlun.db
+      - TZ=Asia/Shanghai
+    restart: unless-stopped
+
+# Optional Postgres example (uncomment and set DATABASE_URL to use postgres)
+#  db:
+#    image: postgres:14
+#    environment:
+#      POSTGRES_USER: chanlun
+#      POSTGRES_PASSWORD: changeme
+#      POSTGRES_DB: chanlun
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data
+#
+#volumes:
+#  pgdata:
+#    driver: local
