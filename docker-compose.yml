@@ -12,20 +12,27 @@ services:
       - ./chanlun.db:/app/chanlun.db
       - ./backend:/app
     environment:
-      - DATABASE_URL=sqlite:///./chanlun.db
+      # Use PostgreSQL by setting DATABASE_URL to the following example
+      # If you prefer SQLite, set DATABASE_URL=sqlite:///./chanlun.db
+      - DATABASE_URL=postgresql://chanlun:changeme@db:5432/chanlun
       - TZ=Asia/Shanghai
+    depends_on:
+      - db
     restart: unless-stopped
 
-# Optional Postgres example (uncomment and set DATABASE_URL to use postgres)
-#  db:
-#    image: postgres:14
-#    environment:
-#      POSTGRES_USER: chanlun
-#      POSTGRES_PASSWORD: changeme
-#      POSTGRES_DB: chanlun
-#    volumes:
-#      - pgdata:/var/lib/postgresql/data
-#
-#volumes:
-#  pgdata:
-#    driver: local
+  db:
+    image: postgres:14
+    container_name: chanlun_db
+    environment:
+      POSTGRES_USER: chanlun
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: chanlun
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+    driver: local
