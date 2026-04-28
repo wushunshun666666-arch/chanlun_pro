@@ -1,0 +1,8 @@
+# requirements for chanlun_select
+pandas
+numpy
+tushare
+akshare
+pyyaml
+python-dotenv
+pytest

@@ -1,0 +1,15 @@
+# Example config for chanlun select tool
+# Do NOT put your real TUSHARE_TOKEN here. Use environment variable or local config file (not committed).
+
+tushare:
+  token: "YOUR_TUSHARE_TOKEN_HERE"
+
+data_source: "tushare"  # or "akshare"
+
+stocks: "all"  # or path to a file with ts_code list, one per line
+
+realtime:
+  enabled: true
+  intervals: ["1min", "5min"]
+  poll_seconds: 60
+  max_per_cycle: 200
