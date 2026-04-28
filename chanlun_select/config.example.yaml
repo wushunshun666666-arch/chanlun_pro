@@ -12,3 +12,4 @@ realtime:
   enabled: true
   intervals: ["1min", "5min"]
   poll_seconds: 60
+  max_per_cycle: 200
