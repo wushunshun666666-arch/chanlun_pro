@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pandas
+numpy
+akshare
+sqlalchemy
+alembic
+python-dotenv
+apscheduler
+requests
+pytest
